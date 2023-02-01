@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Book Detail</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card shadow" style="border-radius: 1rem;">
+        <div class="card-header">
+            <h1 style="text-align: center;">Book Details</h1>
+        </div>
+        <div class="card-body">
+            <p style="margin: 20px;">
+                <label style="font-size: x-large;font-weight: bold;">Book : </label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{book.title}}<br>
+                <label style="font-size: x-large;font-weight: bold;">Author : </label>&emsp;&emsp;&emsp;&emsp;&ensp;{{book.author}}<br>
+                <label style="font-size: x-large;font-weight: bold;">Publish : </label>&emsp;&emsp;&emsp;&emsp;{{book.published_date}}<br>
+                <label style="font-size: x-large;font-weight: bold;">Summary : </label>&emsp;{{book.summary}}<br>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock%}

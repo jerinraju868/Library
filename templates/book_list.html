@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Book List</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card shadow" style="border-radius: 1rem;">
+        <div class="card-header">
+            <h3 style="text-align: center;">Book List</h3>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'book_create' %}" class="btn btn-primary btn-sm">Add New Book</a><br><hr>
+            <table class="table">
+                <thead>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                    <tr>
+                        <td>{{book.title}}</td>
+                        <td>{{book.author}}</td>
+                        <td>
+                            <a href="{% url 'book_detail' book.id %}" class="btn btn-sm btn-warning">View</a>
+                            <a href="{% url 'book_update' book.id %}" class="btn btn-sm btn-success">Edit</a>
+                            <a href="{% url 'book_delete' book.id %}" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock%}
