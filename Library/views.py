@@ -33,6 +33,7 @@ class UpdateBook(UpdateView):
     fields = '__all__'
     success_url = '/books/'
 
+
 class DeleteBook(DeleteView):
     model = Books
     template_name = 'book_delete.html'
