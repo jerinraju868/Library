@@ -1,9 +1,13 @@
 # Library
 Create CRUD APp using ClassBasedViews 
+
 models :
+
     1.Authors[name, age]
     2.Books[title, author, summary, published_date]
+    
 HTML Pages :
+
     1.Author List Page
     2.Book List Page
     3.Book Create Page
@@ -31,20 +35,26 @@ HTML Pages :
 
 ### import os
     import os
+![Screenshot from 2023-02-02 17-06-52](https://user-images.githubusercontent.com/117073931/216314668-b9d8ca18-190c-4206-9d9f-9f5030b4eaa2.png)
+
 
 ### Add app(Library) into the installed apps
     INSTALLED_APPS = [
         'Library',
     ]
+![Screenshot from 2023-02-02 17-07-40](https://user-images.githubusercontent.com/117073931/216314828-5b2ac7b9-3419-4869-b849-72d05bfd57df.png)
 
 ### Adding Templates folder in templates
     os.path.join(BASE_DIR, 'templates')
+![Screenshot from 2023-02-02 17-08-26](https://user-images.githubusercontent.com/117073931/216314957-0b8b8386-20b2-4b5b-b242-263ef2512f5d.png)
 
 # Create template folder in the project root directory
+![Screenshot from 2023-02-02 17-11-06](https://user-images.githubusercontent.com/117073931/216315460-f82dee34-3a9d-406f-9725-867626198ffb.png)
 
 # Library
 
 ## Create a new file urls.py in Library folder
+![Screenshot from 2023-02-02 17-10-38](https://user-images.githubusercontent.com/117073931/216315370-8bdf10b7-7db1-4918-8804-abc7602c6526.png)
 
 ## Library/models.py
     from django.db import models
@@ -64,6 +74,7 @@ HTML Pages :
 
         def __str__(self):
             return self.title
+![Screenshot from 2023-02-02 17-12-21](https://user-images.githubusercontent.com/117073931/216315710-f12832c0-fbce-466d-833b-e395dbf2c8a6.png)
 
 ## Makemigrations and Migrate
     python manage.py makemigrations
@@ -79,6 +90,15 @@ HTML Pages :
 
     admin.site.register(Author)
     admin.site.register(Books)
+![Screenshot from 2023-02-02 17-13-09](https://user-images.githubusercontent.com/117073931/216315844-830286f7-c228-4284-92fa-f9efebbbc02f.png)
+
+# Runserver
+    python manage.py runserver
+
+# Open Browser and search
+    127.0.0.1:8000/admin
+![Screenshot from 2023-02-02 17-38-52](https://user-images.githubusercontent.com/117073931/216320858-e97b429c-9700-4025-8f83-cf4b0f12d949.png)
+
 
 ## Create form.py in Library folder
 ### Library/form.py
@@ -90,6 +110,7 @@ HTML Pages :
         class Meta:
             model = Books
             fields = '__all__'
+![Screenshot from 2023-02-02 17-13-37](https://user-images.githubusercontent.com/117073931/216315937-8bba3892-c267-4e39-a698-c36a5de819c0.png)
 
 # TemplateView
 ## Library/views.py
@@ -98,10 +119,13 @@ HTML Pages :
     from django.urls import reverse_lazy
     from .models import Author, Books
     from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
+![Screenshot from 2023-02-02 17-14-36](https://user-images.githubusercontent.com/117073931/216316148-b3b494b1-eba0-4897-a23c-8cede8b31ea1.png)
 
 ### TemplateView
     class Home(TemplateView):
         template_name = 'home.html'
+![Screenshot from 2023-02-02 17-15-27](https://user-images.githubusercontent.com/117073931/216316301-89becb1f-deac-4864-9b86-84b2539bea90.png)
+
 #### base.html
     <!DOCTYPE html>
     <html lang="en">
@@ -138,6 +162,8 @@ HTML Pages :
         {% endblock content %}
     </body>
     </html>
+![Screenshot from 2023-02-02 17-16-28](https://user-images.githubusercontent.com/117073931/216316462-8644583c-ba1d-414e-b784-416582f3a9db.png)
+
 #### home.html
     {% extends 'base.html' %}
     {% block title %}
@@ -162,7 +188,9 @@ HTML Pages :
         </div>
     </div>
     {% endblock%}
-
+![Screenshot from 2023-02-02 17-17-25](https://user-images.githubusercontent.com/117073931/216316665-22f43115-8376-428e-a39c-14f036e78f26.png)
+### Browser View
+![Screenshot from 2023-02-02 17-18-50](https://user-images.githubusercontent.com/117073931/216316910-d8858e8c-bc90-4059-9bc2-26def75ed01f.png)
 
 # ListView
 ## Author List
@@ -171,6 +199,8 @@ HTML Pages :
         model = Author
         template_name = 'author_list.html'
         context_object_name = 'authors'
+![Screenshot from 2023-02-02 17-19-52](https://user-images.githubusercontent.com/117073931/216317073-604e8bdb-e356-450a-b7a1-fa0e5d8fc408.png)
+
 ### author.html
     {% extends 'base.html' %}
     {% block title %}
@@ -204,6 +234,10 @@ HTML Pages :
         </div>
     </div>
     {% endblock%}
+![Screenshot from 2023-02-02 17-20-32](https://user-images.githubusercontent.com/117073931/216317236-ddf5d7fd-e9aa-4f60-a704-cb288b68d650.png)
+
+### Browser view
+![Screenshot from 2023-02-02 17-22-43](https://user-images.githubusercontent.com/117073931/216317618-feff4530-817d-4763-86e5-1104f4d95c38.png)
 
 ## Book List
 ### Library/views.py
@@ -211,6 +245,8 @@ HTML Pages :
         model = Books
         template_name = 'book_list.html'
         context_object_name = 'books'
+![Screenshot from 2023-02-02 17-21-24](https://user-images.githubusercontent.com/117073931/216317351-d82cc896-5631-416b-aa99-a84d28fc022d.png)
+
 ### book_list.html
     {% extends 'base.html' %}
     {% block title %}
@@ -249,7 +285,10 @@ HTML Pages :
         </div>
     </div>
     {% endblock%}
+![Screenshot from 2023-02-02 17-23-32](https://user-images.githubusercontent.com/117073931/216317739-06cea523-656d-4e3a-9f27-04b759e1b757.png)
 
+### Browser view
+![Screenshot from 2023-02-02 17-24-00](https://user-images.githubusercontent.com/117073931/216317844-ada737d2-eca9-40b4-80fe-b9715b0a041c.png)
 
 # CreateView
 ## Library/views.py
@@ -258,6 +297,8 @@ HTML Pages :
         fields = '__all__' 
         template_name = 'book_create.html'
         success_url = '/books/'
+![Screenshot from 2023-02-02 17-25-02](https://user-images.githubusercontent.com/117073931/216318040-36a1ab61-e71c-47c7-86e7-c7cb04637c8f.png)
+
 ## book_create.html
     {% extends 'base.html' %}
     {% block title %}
@@ -280,6 +321,10 @@ HTML Pages :
         </div>
     </div>
     {% endblock content %}
+![Screenshot from 2023-02-02 17-25-39](https://user-images.githubusercontent.com/117073931/216318168-ea6c3752-c810-46f7-a961-4f73609d6716.png)
+
+### Browser View
+![Screenshot from 2023-02-02 17-26-24](https://user-images.githubusercontent.com/117073931/216318341-18d6fafa-00b9-4478-b963-eb6b189625b9.png)
 
 # DetailView
 ## Library/views.py
@@ -287,6 +332,8 @@ HTML Pages :
         model = Books
         template_name = 'book_detail.html'
         context_object_name = 'book'
+![Screenshot from 2023-02-02 17-27-19](https://user-images.githubusercontent.com/117073931/216318485-bd5ddeaf-2fc2-4de7-b2ca-ee6a43886e1a.png)
+
 ## book_detail.html
     {% extends 'base.html' %}
     {% block title %}
@@ -310,6 +357,10 @@ HTML Pages :
         </div>
     </div>
     {% endblock%}
+![Screenshot from 2023-02-02 17-27-52](https://user-images.githubusercontent.com/117073931/216318608-78035b1c-b5a1-4001-af13-60c9fe037ac9.png)
+
+### Browser View
+![Screenshot from 2023-02-02 17-28-29](https://user-images.githubusercontent.com/117073931/216318744-95226368-9322-4ebc-a7b2-da9187454864.png)
 
 # UpdateView
 ## Library/views.py
@@ -318,6 +369,8 @@ HTML Pages :
         template_name = 'book_update.html'
         fields = '__all__'
         success_url = '/books/'
+![Screenshot from 2023-02-02 17-29-23](https://user-images.githubusercontent.com/117073931/216318892-53b1e3d8-ebb2-4609-8251-634c372d4cc6.png)
+
 ## book_update.html
     {% extends 'base.html' %}
     {% block title %}
@@ -340,6 +393,10 @@ HTML Pages :
         </div>
     </div>
     {% endblock content %}
+![Screenshot from 2023-02-02 17-30-06](https://user-images.githubusercontent.com/117073931/216319009-c9788e92-12b3-41b0-bc59-1862057fa40b.png)
+
+### Browser View
+![Screenshot from 2023-02-02 17-30-38](https://user-images.githubusercontent.com/117073931/216319158-dbacfba3-0a76-489f-95e6-c184777a0117.png)
 
 # DeleteView
 ## Library/views.py
@@ -353,6 +410,8 @@ HTML Pages :
                 return redirect('/books/')
             else:
                 return super(DeleteBook, self).post(request, *args, **kwargs)
+![Screenshot from 2023-02-02 17-31-40](https://user-images.githubusercontent.com/117073931/216319302-e079f6ad-b847-46f2-9e62-835c53a090e7.png)
+
 ## book_delete.html
     {% extends 'base.html' %}
     {% block title %}
@@ -373,3 +432,22 @@ HTML Pages :
         </div>
     </div>
     {% endblock content %}
+![Screenshot from 2023-02-02 17-32-28](https://user-images.githubusercontent.com/117073931/216319437-79fdc9bc-a154-4079-a46a-55ff5c89a411.png)
+
+### Browser View
+![Screenshot from 2023-02-02 17-33-01](https://user-images.githubusercontent.com/117073931/216319552-007e461a-8f4d-4562-af43-093cb010d584.png)
+
+# Library/urls.py
+    from django.urls import path
+    from Library import  views
+    
+    urlpatterns = [
+        path('', views.Home.as_view(), name='home'),
+        path('books/', views.BookList.as_view(), name='books'),
+        path('authors/',views.AuthorList.as_view(), name='authors'),
+        path('create/',views.CreateBook.as_view(), name='book_create'),
+        path('detail/<int:pk>/',views.ViewBook.as_view(), name='book_detail'),
+        path('update/<int:pk>/', views.UpdateBook.as_view(),name='book_update'),
+        path('delete/<int:pk>/', views.DeleteBook.as_view(),name='book_delete'),
+    ]
+![Screenshot from 2023-02-02 17-35-18](https://user-images.githubusercontent.com/117073931/216320003-18df1ad0-c4a3-42e5-8e52-d53528a030d5.png)
